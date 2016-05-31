@@ -1,0 +1,159 @@
+body{
+	margin: 0px;
+	padding: 40px 0px 0px 0px;
+}
+
+.jumbotron{
+	margin: 0px 0px 20px 0px;
+    padding: 40px 20px 40px 20px;
+    min-height: 200px;
+    background: #7986CB ;
+    color:floralwhite;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: aliceblue;
+}
+
+.jumbotron h1{
+    font-size: 60px;
+    text-align: center;
+}
+
+.jumbotron h5{
+    font-size: 25px;
+    text-align: center;
+}
+
+
+.navbar-inverse {
+     background: #303F9F;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    background: #1A237E;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+ .navbar-inverse .navbar-nav > .open > a:hover,
+ .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #fff;
+    background: #1A237E;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu> li> a,
+.navbar-inverse .navbar-nav .open .dropdown-menu {
+    background-color: #303F9F;
+    color:#eeeeee;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu> li> a:hover {
+    color:#000000;
+}
+
+li.active{
+	color: #4d4d4d;
+}
+
+#logowanie{
+	margin: 20px;
+	padding: 20px;
+	font-family: Helvetica New;
+	font-size: 20;
+}
+
+ input[type=email], input[type=password], input[type=text], input[type=date], input[type=number]{
+	width: 300px;
+    height: 50pxpx;
+    padding: 12px 20px;
+	margin: 5px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+ input[type=submit]{
+	min-width: 300px;
+    height: 50pxpx;
+    padding: 12px 20px;
+	margin: 5px 5px 5px 40px;
+    box-sizing: border-box;
+    border: 2px solid #475ab8;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+	background-color: #7986CB;
+    resize: none;
+	cursor: pointer;
+	color: floralwhite;
+}
+
+ #wez-lek{
+     height: 600px;
+	 width: 100%;
+     background: #ffffff url("tlo.jpg") no-repeat right center;
+     text-align: center;
+	 margin: 0px;
+	 padding-top: 230px;
+	 padding-bottom: 230px;
+	 font-size: 50px;
+
+ }
+ 
+ #wez-lek p{
+	 margin: 0px 0px 0px 0px;
+	 height: 70px;
+	padding: 0px;
+	
+ }
+ 
+ 
+#utylizacja{
+	
+	width: 100%;
+	
+}
+table{
+	width: 100%;
+	 border-collapse: collapse;
+	 padding: 0px;
+	 margin: 0px;
+	
+}
+ 
+th{
+	background: #7986CB ;
+    color:floralwhite;
+}
+ 
+th, td{
+	 height: 50px;
+	 vertical-align: middle;
+	 padding: 10px;
+	 border: 1px solid #ddd;
+	 text-align: center;
+ }
+ 
+#blad{
+	font-size: 25px;
+	text-align: center;
+	color: red;
+	font-weight: bold;
+	
+}
+
+.row-footer{
+    background-color: #9999ff;
+    margin: 50px 0px 0px 0px;
+
+}
+
+.row-footer a{
+    color:#eeeeee;
+}
+
+.row-footer a:hover{
+    color: #fff;
+}
