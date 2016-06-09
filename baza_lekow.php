@@ -1,4 +1,5 @@
 <?php
+
 	session_start();
 	require_once 'conf/zmienne.php';
 	require_once "inc/$lang/teksty.php";
@@ -9,23 +10,23 @@
 	if($_GET['wyloguj'] == 1){
 		session_destroy();
 	}
-	//Sprawdzenie czy zalogowano - 
+/*	//Sprawdzenie czy zalogowano - 
 	if(isset($_POST['email']) && isset($_POST['haslo'])){
  		if(sprawdz_login_haslo($_POST['email'],$_POST['haslo']))
 			$_SESSION['zalogowany'] = $_POST['email'];
 		else $byl_blad_logowania=2;}
 	else{ 
 		session_destroy();
-	}
+	}*/
 	
 ?>
 	<div id="tresc">
 	<?php
-		if(!isset($_GET['wybrano'])){
-			header("Location: index.php?wybrano=0&zaloguj_sie=1");
-		}else
-			$opcja = ($_GET['wybrano']);
-		
+//		if(!isset($_GET['wybrano'])){
+//			header("Location: index.php?wybrano=0&zaloguj_sie=1");
+//		}else
+//			$opcja = ($_GET['wybrano']);
+//		
 //		echo "Wybrano opcj� nr: " . $opcja . " " . $wybrane[$opcja];
 	?>
 	<?php
@@ -48,35 +49,31 @@
 							<th>Cena</th>
 							<th>Termin przydatności</th>
 						</tr>
-						<tr>
-							<td>xxx</td>
-							<td>xxx</td>
-							<td>xxx</td>
-							<td>xxx</td>
-						</tr>	
-					</table>
-				</div>
-			</div>
-		</div>
+											
 	<?php 
-//przygotowanie zapytania
-		$dzisiaj=date("Y-m-d");
+	
+//		$dzisiaj = date("Y-m-d");
+// Przygotowanie zapytania
 		$query = "select * from BazaLekow where usuniety = false";
-//wykonanie zapytania i pobranie wyników
+		
+//	Wykonanie zapytania i pobranie wyników
 		$result = $baza->query($query);
 		
-		echo "<hr>";
+
 //wyświetlanie wyniku zapytania
 		if ($result->num_rows > 0) {
 
 			while($row = $result->fetch_assoc()) {
-				echo "id: " . $row["idLeku"]. " nazwa: " . $row["Nazwa"]. " ilosc = " . $row["Ilosc"] . " termin: " .  $row["TerminWaznosci"] . "<br>";
+				echo "<tr> <td>" .  $row["Nazwa"]. "</td> <td>" . $row["ean"] . " </td> <td> " . $row["Ilosc"] . " </td> <td> " .$row["Cena"] . "</td> <td>" .  $row["TerminWaznosci"] . "</td> </tr>";
 			}
 		} else {
 			echo "0 results";
 		}
 	}?>
-	
+						</table>
+				</div>
+			</div>
+		</div>
 	</div>
 
 <?php

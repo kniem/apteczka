@@ -1,39 +1,29 @@
 <?php 
-
+	session_start();
 	require_once 'conf/zmienne.php';
 	require_once "inc/baza.php";
 	require_once "inc/$lang/teksty.php";
 	require_once "inc/nagl.php";
-
-//$dbServer,  serwer, na którym działa MySQL
-//$dbLogin, nazwa użytkownika
-//$dbHaslo, haslo uzytkownika
-//$dbBaza, wybrana baza danych
-
-//Polaczenie z baza
-	$baza= new mysqli($dbServer, $dbLogin, $dbHaslo, $dbBaza);
-
-//czy sie udalo
-	if ($baza->connect_error > 0){
-		die('Nie można połączyć się z bazą ['. $baza->connect_error .']');
+	
+//wylogowanie
+	if($_GET['wyloguj'] == 1){
+		session_destroy();
 	}
+	
+// Odebranie zmiennych z formularza
+	$dbsNazwa = $_GET['nazwa'];
+	$dbsIlosc = $_GET['ilosc'];
+	$dbsEan = $_GET['ean'];
+	$dbsSubstancja = $_GET['substancja'];
+	
+// Uzupelnianie tabeli leki_specyfikacja
+	$akcja = "INSERT INTO leki_specyfikacja VALUES (NULL, '$dbsNazwa', '$dbsEan', '$dbsIlosc', '$dbsSubstancja')";
 
-//Ustawienie wlasciwego kodowania
-	$baza->set_charset("utf8");
-	
-//Odebranie zmiennych z formularza
-	$dbsNazwa = $_POST['nazwa'];
-	$dbsIlosc = $_POST['ilosc'];
-	$dbsEan = $_POST['ean'];
-	$dbsSubstancja = $_POST['substancja'];
-	
-//Uzupelnianie tabeli
-	$sql = "INSERT INTO leki_specyfikacja VALUES (NULL, '$dbsNazwa', '$dbsEan', '$dbsIlosc', '$dbsSubstancja')";
-//
-	if($baza->query($sql) == TRUE){
+// Wykonianie zapytania
+	if($baza->query($akcja) == TRUE){
 		echo "New record created successfully";
 	}else{
-		echo "Error: " . $sql . "<br>" . $baza->error;
+		echo "Error: " . $akcja . "<br>" . $baza->error;
 	}
 	$baza->close();
 ?>

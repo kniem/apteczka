@@ -1,74 +1,62 @@
 <?php 
-//Zakldam ze ten skrypt bedzie zaladowany po zaladowaniu zmiennych
-//	require_once 'conf/zmienne.php';
+	session_start();
+	require_once 'conf/zmienne.php';
 	require_once "inc/baza.php";
 	require_once "inc/$lang/teksty.php";
 	require_once "inc/nagl.php";
-
-//$dbServer,  serwer, na którym dzia³a MySQL
-//$dbLogin, nazwa u¿ytkownika
-//$dbHaslo, haslo uzytkownika
-//$dbBaza, wybrana baza danych
-
-//Polaczenie z baza
-	$baza= new mysqli($dbServer, $dbLogin, $dbHaslo, $dbBaza);
-
-//czy sie udalo
-	if ($baza->connect_error > 0){
-		die('Nie mo¿na po³¹czyæ siê z baz¹ ['. $baza->connect_error .']');
+	
+//wylogowanie
+	if($_GET['wyloguj'] == 1){
+		session_destroy();
 	}
-
-//Ustawienie wlasciwego kodowania
-	$baza->set_charset("utf8");
 	
 //Odebranie zmiennych z formularza 
-	$dbEan = $_POST['ean'];
-	echo $dbEan;
-	$dbIlosc = $_POST['ilosc'];
-	$dbData = $_POST['data'];
-//	$dbUzytkownik=$_SESSION['uzytkownik'];
-	$dbUzytkownik= "Kamelia";
+	$dbEan = $_GET['ean'];
+	$dbIlosc = $_GET['ilosc'];
+	$dbData = $_GET['data'];
+	$dbUzytkownik = $_SESSION['zalogowany'];
 
-//Uzupelnianie tabeli 
-	$sql = "INSERT INTO zazyte_leki VALUES (NULL, '$dbEan', '$dbUzytkownik', '$dbIlosc', '$dbData')";
-
-	
-
+// Zapytanie: uzupelnianie tabeli zazyte_leki 
+	$akcja1 = "INSERT INTO zazyte_leki VALUES (NULL, '$dbEan', '$dbUzytkownik', '$dbIlosc', '$dbData')";
 
 //
-	if($baza->query($sql) == TRUE){
+	if($baza->query($akcja1) == TRUE){
 		echo "New record created successfully";
 	}else{
-		echo "Error: " . $sql . "<br>" . $baza->error;
+		echo "Error: " . $akcja1 . "<br>" . $baza->error;
 	}
+	
+// Zapytanie: wybranie z bazy lekow zazytego przez uzytkownika leku
+	$akcja2= "SELECT ilosc FROM BazaLekow WHERE ean='$dbEan'";
 
-
-
-// odejmowanie leku
-	$sql0= "SELECT ilosc FROM BazaLekow WHERE ean='$dbEan'";
-//		if($baza->query($sql0) == TRUE){
-//		echo "New record selected successfully";
-//	}else{
-//		echo "Error: " . $sql0 . "<br>" . $baza->error;
-//	}
-	$result = $baza->query($sql0);
-	//wyœwietlanie wyniku zapytania
+	$result = $baza->query($akcja2);
+	
+// Wyœwietlanie wyniku zapytania
 	if ($result->num_rows > 0) {
 
 		while($row = $result->fetch_assoc()) {
 				$ilosc0 = $row["ilosc"];
-				echo $ilosc0;
 			}
 		} else {
 			echo "0 results";
 		}
+// Zapytanie: odejmowanie z bazy lekow odpowiedniej ilosci danego leku po jego zazyciu
+	$akcja3= "UPDATE BazaLekow SET ilosc=($ilosc0 - $dbIlosc) WHERE ean='$dbEan'";
 
-	$sql1= "UPDATE BazaLekow SET ilosc=($ilosc0 - $dbIlosc) WHERE ean='$dbEan'";
-
-	if($baza->query($sql1) == TRUE){
+	if($baza->query($akcja3) == TRUE){
 		echo "New record updated successfully";
 	}else{
-		echo "Error: " . $sql1 . "<br>" . $baza->error;
+		echo "Error: " . $akcja3 . "<br>" . $baza->error;
 	}
+	
+// Zapytanie: usuwanie leku ktorego ilosc = 0	
+	$akcja4 = "DELETE from BazaLekow WHERE ilosc=0";
+	
+	if($baza->query($akcja4) == TRUE){
+		echo "Record deleted successfully";
+	}else{
+		echo "Error: " . $akcja4 . "<br>" . $baza->error;
+	}
+	
 	$baza->close();
 ?>

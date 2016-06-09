@@ -21,11 +21,11 @@
 ?>
 
 <div id="tresc">
-<?php 
+<?php /* 
 	if( !isset($_GET['wybrano'])){
 		header ("Location: index.php?wybrano=0&zaloguj_sie=1");
 	} else 
-		$opcja  = ($_GET['wybrano']);
+		$opcja  = ($_GET['wybrano']);*/
 
 	echo '<p id="blad">';
 		if(isset($byl_blad_logowania)&& $byl_blad_logowania==2) echo $blad_logowania;
@@ -62,14 +62,14 @@
 					<h2>Wziąłeś lek z apteczki?</h2>
 				</div>
 				<div class="col-xs-12">
-					<form action="wez_lek_bazy.php" method="POST">
+					<form action="wez_lek_bazy.php" method="GET">
 						<fieldset>
 							<label for="data">Data</label><br>
 							<input type="date" name="data" required><br>
 							<label for="ean">Kod EAN</label><br>
 							<input type="text" name="ean" required><br>
 							<label for="ilosc">Ilość</label><br>
-							<input type="number" name="ilosc" min="0" required><br>
+							<input type="number" name="ilosc" min="1" required><br>
 							<input type="submit" value="Zapisz" style="margin: 5px;">
 						</fieldset>	
 					</form>
@@ -80,4 +80,3 @@
 <?php
 	require_once 'inc/stopka.php';
 ?>
-

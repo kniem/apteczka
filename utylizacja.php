@@ -1,43 +1,72 @@
 <?php 
-//Zakldam ze ten skrypt bedzie zaladowany po zaladowaniu zmiennych
+	session_start();
 	require_once 'conf/zmienne.php';
-//	require_once "inc/baza.php";
+	require_once "inc/baza.php";
 	require_once "inc/$lang/teksty.php";
 	require_once "inc/nagl.php";
+	
+//wylogowanie
+	if($_GET['wyloguj'] == 1){
+		session_destroy();
+	} ?>
+	
+	<div id="tresc">
+	<?php
+//		if(!isset($_GET['wybrano'])){
+//			header("Location: index.php?wybrano=0&zaloguj_sie=1");
+//		}else
+//			$opcja = ($_GET['wybrano']);
+//		
+//		echo "Wybrano opcję nr: " . $opcja . " " . $wybrane[$opcja];
+	?>
+	<?php
+		if(!isset($_SESSION['zalogowany'])){
+			header("Location: index.php?wybrano=0&zaloguj_sie=1");
+		}else{ ?>
+		<div class="container">
+			<div class="row row-content">
+				<div class="col-xs-12">
 
-//$dbServer,  serwer, na którym działa MySQL
-//$dbLogin, nazwa użytkownika
-//$dbHaslo, haslo uzytkownika
-//$dbBaza, wybrana baza danych
+											
+<?php 	
 
-//Polaczenie z baza
-	$baza= new mysqli($dbServer, $dbLogin, $dbHaslo, $dbBaza);
-
-//czy sie udalo
-	if ($baza->connect_error > 0){
-		die('Nie można połączyć się z bazą ['. $baza->connect_error .']');
-	}
-
-//Ustawienie wlasciwego kodowania
-	$baza->set_charset("utf8");
-
+// Wybranie z bazy lekow przeterminowanych
 	$dzisiaj=date("Y-m-d");
-	$akcja0= "SELECT * FROM BazaLekow WHERE TerminWaznosci<='$dzisiaj' AND usuniety = false";
+	$akcja1= "SELECT * FROM BazaLekow WHERE TerminWaznosci<='$dzisiaj' AND usuniety = false";
 	
-	$utylizuj = "UPDATE BazaLekow SET usuniety = true WHERE idLeku = $idLeku";
-
 // wykonanie i przypisanie do zmiennej $przeterminowane
-	$result = $baza->query($akcja0);
+	$result = $baza->query($akcja1);
 
-			if ($result->num_rows > 0) {
+			if ($result->num_rows > 0) { ?>
+					<h2>Leki przeterminowane</h2>
+					<table>
+						<tr>
+							<th>Nazwa leku</th>
+							<th>Kod EAN</th>
+							<th>Ilość</th>
+							<th>Cena</th>
+							<th>Termin przydatności</th>
+						</tr>				
+					
+<?php			while($row = $result->fetch_assoc()) {
+				echo "<tr> <td>" .  $row["Nazwa"]. "</td> <td>" . $row["ean"] . " </td> <td> " . $row["Ilosc"] . " </td> <td> " .$row["Cena"] . "</td> <td>" .  $row["TerminWaznosci"] . "</td> </tr>";
+			} ?>
+					</table>
+					<button>
+						<a href="utylizacja_bazy.php">Utylizuj leki</a>
+					</button>
 
-			while($row = $result->fetch_assoc()) {
-				echo "id: " . $row["idLeku"]. " nazwa: " . $row["Nazwa"]. " ilosc = " . $row["ean"] . " termin: " .  $row["TerminWaznosci"] . "<br>";
-			}
-		} else {
-			echo "0 results";
-		}
+<?php		} else {
+			echo "<h2>Nie masz żadnych leków do utylizacji</h2>";
+		} ?>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php }
+	require_once 'inc/stopka.php';
 	
-
-$baza->close();
+// wykonanie utylizacji lekow przeterminowanych	
+	$akcja2 = "UPDATE BazaLekow SET usuniety = true WHERE idLeku = $idLeku";
+	$baza->close();
 ?>
