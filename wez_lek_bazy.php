@@ -20,8 +20,14 @@
 
 	$wyszukaj = "SELECT id FROM leki_specyfikacja WHERE nazwa='$dbNazwa'";
 	$lek=$baza->query($wyszukaj);
+	$lek_spec=$lek->fetch_assoc();
+	$lek_id=$lek_spec["id"];
 	
-	if ($lek->num_rows == 0){
+	$wyszukaj2="SELECT * FROM BazaLekow WHERE id_specyfikacja='$lek_id'";
+	$lek2=$baza->query($wyszukaj2);
+
+	
+	if (($lek->num_rows == 0) OR ($lek2->num_rows == 0)){
 		echo "Nie posiadasz takiego leku w apteczce! Sprawdź, czy dobrze podałeś jego nazwę, lub wybierz się do apteki.";
 	}
 	else {
