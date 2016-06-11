@@ -43,13 +43,11 @@
 							<div class="col-xs-12">
 								<label for="nazwa">Nazwa leku</label><br>
 								<input type="text" name="nazwa" required><br>
-								<label for="ean">Kod EAN</label><br>
-								<input type="text" name="ean" required><br>
 								<label for="ilosc">Ilość</label><br>
 								<input type="number" name="ilosc" min="1" required><br>
 								<label for="cena">Cena leku</label><br>
 								<input type="number" name="cena" required><br>
-								<label for="termin">Termin przydatnośći</label><br>
+								<label for="termin">Data ważności</label><br>
 								<input type="date" name="termin" required><br>
 								<input type="submit" value="Zapisz" style="margin: 5px;">
 								
@@ -64,8 +62,6 @@
 								<input type="text" name="nazwa" required><br>
 								<label for="ean">Kod EAN</label><br>
 								<input type="text" name="ean" required><br>
-								<label for="ilosc">Ilość sztuk w opakowaniu</label><br>
-								<input type="number" name="ilosc" required><br>
 								<label for="substancja">Substancja czynna</label><br>
 								<input type="text" name="substancja" required><br>
 								<input type="submit" value="Zapisz" style="margin: 5px;">

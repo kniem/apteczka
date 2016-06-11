@@ -12,12 +12,11 @@
 	
 // Odebranie zmiennych z formularza
 	$dbsNazwa = $_GET['nazwa'];
-	$dbsIlosc = $_GET['ilosc'];
 	$dbsEan = $_GET['ean'];
 	$dbsSubstancja = $_GET['substancja'];
 	
 // Uzupelnianie tabeli leki_specyfikacja
-	$akcja = "INSERT INTO leki_specyfikacja VALUES (NULL, '$dbsNazwa', '$dbsEan', '$dbsIlosc', '$dbsSubstancja')";
+	$akcja = "INSERT INTO leki_specyfikacja VALUES (NULL, '$dbsNazwa', '$dbsEan', '$dbsSubstancja')";
 
 // Wykonianie zapytania
 	if($baza->query($akcja) == TRUE){

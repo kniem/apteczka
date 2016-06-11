@@ -35,9 +35,9 @@
 	$akcja1= "SELECT * FROM BazaLekow WHERE TerminWaznosci<='$dzisiaj' AND usuniety = false";
 	
 // wykonanie i przypisanie do zmiennej $przeterminowane
-	$result = $baza->query($akcja1);
+	$przeterminowane = $baza->query($akcja1);
 
-			if ($result->num_rows > 0) { ?>
+			if ($przeterminowane->num_rows > 0) { ?>
 					<h2>Leki przeterminowane</h2>
 					<table>
 						<tr>
@@ -48,16 +48,26 @@
 							<th>Termin przydatności</th>
 						</tr>				
 					
-<?php			while($row = $result->fetch_assoc()) {
-				echo "<tr> <td>" .  $row["Nazwa"]. "</td> <td>" . $row["ean"] . " </td> <td> " . $row["Ilosc"] . " </td> <td> " .$row["Cena"] . "</td> <td>" .  $row["TerminWaznosci"] . "</td> </tr>";
-			} ?>
-					</table>
-					<button>
-						<a href="utylizacja_bazy.php">Utylizuj leki</a>
-					</button>
+<?php			
+while($row = $przeterminowane->fetch_assoc()) {
+	
 
-<?php		} else {
-			echo "<h2>Nie masz żadnych leków do utylizacji</h2>";
+	$idspec=$row["id_specyfikacja"];
+	
+	$nazwa_ean="SELECT * FROM leki_specyfikacja WHERE id='$idspec'";
+	$result=$baza->query($nazwa_ean);
+	$dane=$result->fetch_assoc();
+
+	echo "<tr> <td>" .  $dane["nazwa"]. "</td> <td>" . $dane["ean"] . " </td> <td> " . $row["Ilosc"] . " </td> <td> " .$row["Cena"] . "</td> <td>" .  $row["TerminWaznosci"] . "</td> </tr>";
+			} ?>
+		</table>
+		<button>
+		<a href="utylizacja_bazy.php">Utylizuj leki</a>
+		</button>
+
+<?php		} 
+else {
+	echo "<h2>Nie masz żadnych leków do utylizacji</h2>";
 		} ?>
 				</div>
 			</div>

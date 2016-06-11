@@ -66,8 +66,8 @@
 						<fieldset>
 							<label for="data">Data</label><br>
 							<input type="date" name="data" required><br>
-							<label for="ean">Kod EAN</label><br>
-							<input type="text" name="ean" required><br>
+							<label for="ean">Nazwa</label><br>
+							<input type="text" name="name" required><br>
 							<label for="ilosc">Ilość</label><br>
 							<input type="number" name="ilosc" min="1" required><br>
 							<input type="submit" value="Zapisz" style="margin: 5px;">

@@ -27,7 +27,7 @@
 //		}else
 //			$opcja = ($_GET['wybrano']);
 //		
-//		echo "Wybrano opcj� nr: " . $opcja . " " . $wybrane[$opcja];
+//		echo "Wybrano opcj� nr: " . $opcja . " " . $wybrane[$opcja];
 	?>
 	<?php
 		if(!isset($_SESSION['zalogowany'])){
@@ -36,7 +36,7 @@
 		<div class="container">
 			<div class="row row-content">
 				<div class="col-xs-12">
-					<h2>Twoja baza leków</h2>
+					<h2>Zawartosc Twojej apteczki</h2>
 				</div>	
 			</div>
 			<div class="row row-content">
@@ -44,7 +44,6 @@
 					<table>
 						<tr>
 							<th>Nazwa leku</th>
-							<th>Kod EAN</th>
 							<th>Ilość</th>
 							<th>Cena</th>
 							<th>Termin przydatności</th>
@@ -56,15 +55,20 @@
 // Przygotowanie zapytania
 		$query = "select * from BazaLekow where usuniety = false";
 		
+		
 //	Wykonanie zapytania i pobranie wyników
 		$result = $baza->query($query);
 		
-
 //wyświetlanie wyniku zapytania
 		if ($result->num_rows > 0) {
 
 			while($row = $result->fetch_assoc()) {
-				echo "<tr> <td>" .  $row["Nazwa"]. "</td> <td>" . $row["ean"] . " </td> <td> " . $row["Ilosc"] . " </td> <td> " .$row["Cena"] . "</td> <td>" .  $row["TerminWaznosci"] . "</td> </tr>";
+				$lek_id=$row["id_specyfikacja"];
+				
+				$nazwa_leku="SELECT nazwa FROM leki_specyfikacja WHERE id=$lek_id";
+				$nazwa_leku_spec=$baza->query($nazwa_leku);
+				$name=$nazwa_leku_spec->fetch_assoc();
+				echo "<tr> <td>" .  $name["nazwa"]. "</td> <td> " . $row["Ilosc"] . " </td> <td> " .$row["Cena"] . "</td> <td>" .  $row["TerminWaznosci"] . "</td> </tr>";
 			}
 		} else {
 			echo "0 results";
