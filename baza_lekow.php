@@ -1,6 +1,6 @@
 <?php
-
 	session_start();
+	
 	require_once 'conf/zmienne.php';
 	require_once "inc/$lang/teksty.php";
 	require_once "inc/nagl.php";

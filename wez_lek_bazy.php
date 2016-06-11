@@ -71,7 +71,7 @@
 	
 
 	
-// Zapytanie: usuwanie leku ktorego ilosc = 0	
+// Zapytanie: usuwanie leku ktorego ilosc = 0 DO POPRAWY NIE MOZNA USUWAC Z BAZY!!!!!!!!!!!!!!!!!!!	
 	$akcja4 = "DELETE from BazaLekow WHERE ilosc=0";
 	$baza->query($akcja4);
 	/*if($baza->query($akcja4) == TRUE){

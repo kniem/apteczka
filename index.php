@@ -1,14 +1,16 @@
 <?php 
-
 	session_start();
+	
 	require_once 'conf/zmienne.php';
 	require_once "inc/$lang/teksty.php";
 	require_once "inc/funkcje.php";
 	require_once "inc/nagl.php";
-	
+
 //wylogowanie
 	if($_GET['wyloguj'] == 1){
+		header("Location: index.php?wybrano=0");
 		session_destroy();
+		exit();
 	}
 //Sprawdzenie czy zalogowano - 
 	if(isset($_POST['email']) && isset($_POST['haslo'])){
