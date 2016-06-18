@@ -1,6 +1,7 @@
 body{
 	margin: 0px;
 	padding: 40px 0px 0px 0px;
+	height: 100%;
 }
 
 .jumbotron{
@@ -56,6 +57,16 @@ li.active{
 	color: #4d4d4d;
 }
 
+#wrapper{
+	min-height: 100%;
+	position: relative;
+
+}
+
+#tresc{
+	padding-bottom: 150px;
+}
+
 #logowanie{
 	margin: 20px;
 	padding: 20px;
@@ -77,7 +88,7 @@ li.active{
 
  input[type=submit]{
 	min-width: 300px;
-    height: 50pxpx;
+    height: 50px;
     padding: 12px 20px;
 	margin: 5px 5px 5px 40px;
     box-sizing: border-box;
@@ -146,7 +157,9 @@ th, td{
 
 .row-footer{
     background-color: #9999ff;
-    margin: 50px 0px 0px 0px;
+	height: 150px;
+	position: absolute;
+	width: 100%;
 
 }
 

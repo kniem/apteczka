@@ -35,7 +35,7 @@
 		if(!isset($_SESSION['zalogowany'])){
 			header("Location: index.php?wybrano=0&zaloguj_sie=1");
 		}else{ ?>
-			<div class="container">
+			<div class="container" style="padding-top: 50px;">
 				<div class="row row-content">
 					<div class="col-xs-12 col-sm-6">
 						<form role="form" action="dodaj_do_bazy.php?wybrano=5" method="GET">
@@ -69,10 +69,12 @@
 						</form>	
 					</div>
 				</div>
+				<div class="row" style="padding: 20px 0px;">
 				<center>
 					<form role="form" action="specyfikacje.php" method="GET">
 						<input type="submit" value="Sprawdź leki dostępne w bazie"> 
 						</form></center>
+				</div>
 			</div>
 		<?php } ?>
 	</div>

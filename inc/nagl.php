@@ -15,8 +15,8 @@
   </head>
 
   <body role="document">
-
-    
+	<div id="wrapper">
+    <div id="header">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -35,4 +35,5 @@
   <div class="jumbotron">
     <h1><?php echo $tytul;?></h1>
     <h5><?php echo $podtytul;?></h5>
+  </div>
   </div>

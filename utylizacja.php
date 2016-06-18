@@ -61,13 +61,13 @@ while($row = $przeterminowane->fetch_assoc()) {
 	echo "<tr> <td>" .  $dane["nazwa"]. "</td> <td>" . $dane["ean"] . " </td> <td> " . $row["Ilosc"] . " </td> <td> " .$row["Cena"] . "</td> <td>" .  $row["TerminWaznosci"] . "</td> </tr>";
 			} ?>
 		</table>
-		<form role="form" action="utylizacja_bazy.php?" method="GET">
+		<form role="form" action="utylizacja_bazy.php?" method="GET" style="margin: 20px 0px 0px -40px; padding: 0px;">
 		<input type="submit" value="Utylizuj przeterminowane leki">
 		</form>
 
 <?php		} 
 else {
-	echo "<h2>Nie masz żadnych leków do utylizacji</h2>";
+	echo "<h3>Nie masz żadnych leków do utylizacji</h3>";
 		} ?>
 				</div>
 			</div>
@@ -75,6 +75,7 @@ else {
 	</div>
 <?php }
 	require_once 'inc/stopka.php';
+
 	
 // wykonanie utylizacji lekow przeterminowanych	
 	$akcja2 = "UPDATE BazaLekow SET usuniety = true WHERE idLeku = $idLeku";
