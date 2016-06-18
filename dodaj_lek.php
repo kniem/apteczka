@@ -38,7 +38,7 @@
 			<div class="container" style="padding-top: 50px;">
 				<div class="row row-content">
 					<div class="col-xs-12 col-sm-6">
-						<form role="form" action="dodaj_do_bazy.php?wybrano=5" method="GET">
+						<form role="form" action="dodaj_do_bazy.php" method="GET">
 							<h3>Wprowadź lek do apteczki</h3>
 							<div class="col-xs-12">
 								<label for="nazwa">Nazwa leku</label><br>

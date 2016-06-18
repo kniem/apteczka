@@ -21,6 +21,7 @@
 	$menuBaza = "Twoje leki"; //
 	$menuDodaj = "Dodaj lek"; //
 	$menuUtylizacja = "Leki do utylizacji"; //
+	$menuRaport = "Raport";
 	$menuLog="Logowanie";
 	$menuBazy="Z bazy";
 	$menuDok="Dokumentacja";
