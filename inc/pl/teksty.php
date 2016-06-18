@@ -17,8 +17,8 @@
 	$blad_logowania="Błąd logowania! Nieprawidłowy email lub hasło.";
 	
 //menu
-	$menuAp = "Twoja apteczka"; //
-	$menuBaza = "Baza leków"; //
+	$menuAp = "Apteczka"; //
+	$menuBaza = "Twoje leki"; //
 	$menuDodaj = "Dodaj lek"; //
 	$menuUtylizacja = "Leki do utylizacji"; //
 	$menuLog="Logowanie";

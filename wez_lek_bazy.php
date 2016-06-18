@@ -25,48 +25,49 @@
 	
 	$wyszukaj2="SELECT * FROM BazaLekow WHERE id_specyfikacja='$lek_id'";
 	$lek2=$baza->query($wyszukaj2);
-
+/*
 	
-	if (($lek->num_rows == 0) OR ($lek2->num_rows == 0)){
+	if ($lek2->num_rows == 0){
 		echo "Nie posiadasz takiego leku w apteczce! Sprawdź, czy dobrze podałeś jego nazwę, lub wybierz się do apteki.";
 	}
 	else {
 		
-		$row=$lek->fetch_assoc();
-		$idspec=$row["id"];
-		
+	
 		// uzupelnienie tab zazyte leki
-		$akcja1 = "INSERT INTO zazyte_leki VALUES (NULL, '$idspec', '$dbUzytkownik', '$dbIlosc', '$dbData')";
+		$akcja1 = "INSERT INTO zazyte_leki VALUES (NULL, '$lek_id', '$dbUzytkownik', '$dbIlosc', '$dbData')";
 		
 		if($baza->query($akcja1) == TRUE){
 			echo "Zanotowano zażycie leku";
 		}else{
 			echo "Error: " . $akcja1 . "<br>" . $baza->error;
 		}
-		
+		*/
 		// zmniejszenie leku w bazie o 1
-		$akcja2= "SELECT ilosc FROM BazaLekow WHERE id_specyfikacja='$idspec'";
+		$akcja2= "SELECT ilosc FROM BazaLekow WHERE id_specyfikacja='$lek_id'";
 		$result = $baza->query($akcja2);
 		
 			//pobieranie aktualnej ilosci leku
-		if ($result->num_rows > 0) {
+		//if ($result->num_rows > 0) {
 		
-			while($row = $result->fetch_assoc()) {
-				$ilosc0 = $row["ilosc"];
-			}
-		} else {
-			echo "0 results";
-		}
+		//	while() {
+		$row = $result->fetch_assoc();
+		$ilosc0 = $row["ilosc"];
+		//	}
+		//} else {
+		//	echo "0 results";
+		//}
 		
+		$newval=$ilosc0 - $dbIlosc;
+		echo $newval;
 		// Odejmowanie z bazy lekow odpowiedniej ilosci danego leku po jego zazyciu
-		$akcja3= "UPDATE BazaLekow SET ilosc=($ilosc0 - $dbIlosc) WHERE id_specyfikacja='$idspec'";
+		$akcja3= "UPDATE BazaLekow SET ilosc=$newval WHERE id_specyfikacja='$lek_id'";
 		
 		if($baza->query($akcja3) == TRUE){
 			echo "Zanotowano wyjęcie leku z apteczki";
 		}else{
 			echo "Error: " . $akcja3 . "<br>" . $baza->error;
 		}
-	}
+	//}
 	;
 	
 

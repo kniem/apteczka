@@ -69,7 +69,10 @@
 						</form>	
 					</div>
 				</div>
-				
+				<center>
+					<form role="form" action="specyfikacje.php" method="GET">
+						<input type="submit" value="Sprawdź leki dostępne w bazie"> 
+						</form></center>
 			</div>
 		<?php } ?>
 	</div>

@@ -61,9 +61,9 @@ while($row = $przeterminowane->fetch_assoc()) {
 	echo "<tr> <td>" .  $dane["nazwa"]. "</td> <td>" . $dane["ean"] . " </td> <td> " . $row["Ilosc"] . " </td> <td> " .$row["Cena"] . "</td> <td>" .  $row["TerminWaznosci"] . "</td> </tr>";
 			} ?>
 		</table>
-		<button>
-		<a href="utylizacja_bazy.php">Utylizuj leki</a>
-		</button>
+		<form role="form" action="utylizacja_bazy.php?" method="GET">
+		<input type="submit" value="Utylizuj przeterminowane leki">
+		</form>
 
 <?php		} 
 else {
