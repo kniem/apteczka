@@ -5,6 +5,7 @@
         <li><a href="dodaj_lek.php?wybrano=3"><?php echo $menuDodaj;?></a></li>
         <li><a href="utylizacja.php?wybrano=4"><?php echo $menuUtylizacja;?></a></li>
 		<li><a href="raport.php?wybrano=5"><?php echo $menuRaport;?></a></li>
+		<li><a href="historia.php?wybrano=6"><?php echo $menuHistoria;?></a></li>
 		<li><a href="index.php?wybrano=0&wyloguj=1"><?php echo $menuWyloguj;?></a></li>
     </ul>
 </div>

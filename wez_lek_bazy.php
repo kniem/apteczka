@@ -16,6 +16,11 @@
 	$dbData = $_GET['data'];
 	$dbUzytkownik = $_SESSION['zalogowany'];
 
+	if ($dbIlosc<=0){
+		echo "Podałeś nieodpowiednią liczbę. Wypełnij ponownie formularz.";
+	}
+	else {
+	
 //Wyszukanie odpowiedniego leku
 
 	$wyszukaj = "SELECT id FROM leki_specyfikacja WHERE nazwa='$dbNazwa'";
@@ -25,61 +30,68 @@
 	
 	$wyszukaj2="SELECT * FROM BazaLekow WHERE id_specyfikacja='$lek_id'";
 	$lek2=$baza->query($wyszukaj2);
-/*
+	
+	
 	
 	if ($lek2->num_rows == 0){
 		echo "Nie posiadasz takiego leku w apteczce! Sprawdź, czy dobrze podałeś jego nazwę, lub wybierz się do apteki.";
 	}
 	else {
-		
-	
-		// uzupelnienie tab zazyte leki
-		$akcja1 = "INSERT INTO zazyte_leki VALUES (NULL, '$lek_id', '$dbUzytkownik', '$dbIlosc', '$dbData')";
-		
-		if($baza->query($akcja1) == TRUE){
-			echo "Zanotowano zażycie leku";
-		}else{
-			echo "Error: " . $akcja1 . "<br>" . $baza->error;
-		}
-		*/
-		// zmniejszenie leku w bazie o 1
+		//wybranie ilosci leku z tabeli 
 		$akcja2= "SELECT ilosc FROM BazaLekow WHERE id_specyfikacja='$lek_id'";
 		$result = $baza->query($akcja2);
 		
-			//pobieranie aktualnej ilosci leku
-		//if ($result->num_rows > 0) {
-		
-		//	while() {
 		$row = $result->fetch_assoc();
 		$ilosc0 = $row["ilosc"];
-		//	}
-		//} else {
-		//	echo "0 results";
-		//}
+		
 		
 		$newval=$ilosc0 - $dbIlosc;
-		echo $newval;
-		// Odejmowanie z bazy lekow odpowiedniej ilosci danego leku po jego zazyciu
-		$akcja3= "UPDATE BazaLekow SET ilosc=$newval WHERE id_specyfikacja='$lek_id'";
-		
-		if($baza->query($akcja3) == TRUE){
-			echo "Zanotowano wyjęcie leku z apteczki";
-		}else{
-			echo "Error: " . $akcja3 . "<br>" . $baza->error;
+		if ($newval<0){
+			echo "Ups! W twojej apteczce zabrakło leku ". $dbNazwa."<br>
+					Obecnie jest dostępnych: ". $ilosc0." sztuk. Wybierz się do lekarza lub apteki!";
 		}
-	//}
-	;
+		
+		
+		else {
+		
+			// Odejmowanie z bazy lekow odpowiedniej ilosci danego leku po jego zazyciu
+			$akcja3= "UPDATE BazaLekow SET ilosc=$newval WHERE id_specyfikacja='$lek_id'";
+		
+			if($baza->query($akcja3) == TRUE){
+				echo "Zanotowano wyjęcie leku z apteczki.<br>Pozostało: ". $newval." sztuk.<br>";
+			}else{
+				echo "Error: " . $akcja3 . "<br>" . $baza->error;
+			}
+		
+			// znalezienie idkonta uzytkownika
+			$search_user="SELECT idkonta FROM uzytkownicy WHERE email='$dbUzytkownik'";
+			$user=$baza->query($search_user);
+			$row=$user->fetch_assoc();
+		
+			$userid=$row["idkonta"]; // id uzytkownika
+			// wstawienie adnotacji o zazyciu leku do tabeli zazyte
+			
+			$new_record="INSERT INTO zazyte VALUES (NULL, '$userid', '$dbNazwa', '$dbIlosc', '$dbData')";
+		
+		
+			if($baza->query($new_record) == TRUE){
+				echo "Dodano lek ".$dbNazwa." do listy zażytych leków.<br>";
+	
+			}else{
+				echo "Error: " . $akcja1 . "<br>" . $baza->error;
+				echo "Ups! Coś poszło nie tak i nie mogliśmy zanotować Twojego wpisu!<br>";
+			}
+		}
+	}
+	}
 	
 
 	
-// Zapytanie: usuwanie leku ktorego ilosc = 0 DO POPRAWY NIE MOZNA USUWAC Z BAZY!!!!!!!!!!!!!!!!!!!	
-	$akcja4 = "DELETE from BazaLekow WHERE ilosc=0";
+// Zapytanie: usuwanie leku ktorego ilosc = 0 
+	$akcja4 = "DELETE from BazaLekow WHERE ilosc<=0";
 	$baza->query($akcja4);
-	/*if($baza->query($akcja4) == TRUE){
-		echo "Record deleted successfully";
-	}else{
-		echo "Error: " . $akcja4 . "<br>" . $baza->error;
-	}*/
-	
+	if($baza->query($akcja4) == FALSE){
+		echo "Error: " . $akcja4 . "<br>" . $baza->error;;
+	}
 	$baza->close();
 ?>

@@ -51,10 +51,8 @@
 											
 	<?php 
 	
-//		$dzisiaj = date("Y-m-d");
 // Przygotowanie zapytania
-		$query = "select * from BazaLekow where usuniety = false";
-		
+		$query = "select * from BazaLekow where usuniety = false";	
 		
 //	Wykonanie zapytania i pobranie wyników
 		$result = $baza->query($query);

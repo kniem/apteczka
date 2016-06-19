@@ -26,6 +26,7 @@
 	$menuBazy="Z bazy";
 	$menuDok="Dokumentacja";
 	$menuOpis="Opis zadania";
+	$menuHistoria="Historia";
 	$menuWyloguj="Wyloguj";
 	
 //Wybrana opcja

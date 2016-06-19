@@ -14,7 +14,7 @@
 		exit();
 	}
 
-//////////////LOGOWANKO/////////////////////////
+//AKCJA LOGOWANIE 
 
 	if(!isset($_SESSION['zalogowany'])){
 		if(isset($_POST['email']) && isset($_POST['haslo'])){
@@ -48,7 +48,11 @@
 //////////////KONIEC LOGOWANKA////////////////////
 ?>
 
+
 <?php
+
+//FORMULARZE 
+
 	if (!isset($_SESSION['zalogowany'])){
 		?>
 	<div id="tresc">
@@ -63,8 +67,13 @@
 							<input type="submit" value="Zaloguj">
 						</fieldset>	
 					</form>
-				</div>
+				</div>				
 			</div>
+			<br><center>
+			<h4>Nie masz konta?</h4><br>
+				<form action="rejestracja.php" method="POST">
+				<input type="submit" value="Zarejestruj się"></form>
+				</center>
 		</div>
 	</div>
 	<?php 
