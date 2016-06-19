@@ -23,7 +23,6 @@
 			$imie = $_POST['imie'];
 			$nazwisko = $_POST['nazwisko'];
 			$szyfr_haslo = crypt($haslo, CRYPT_MD5);
-			echo $email .$szyfr_haslo;
 			
 			if($baza -> connect_errno != 0){
 				echo "Error: " . $baza -> connect_errno;
@@ -35,7 +34,8 @@
 				
 				echo "Zarejestrowałeś się w aplikacji Domowa Apteczka. Przejdź na stronę główną, by się zalogować."
 				?>
-				<center><b><a href="index.php">Strona główna</a></b></center>
+				<div id="tresc">
+				<center style="margin: 50px 0px;"><b><a href="index.php">Strona główna</a></b></center></div>
 				<?php
 			}
 		}
@@ -45,15 +45,19 @@
 			<div id="tresc">
 				<div class="container" style="padding-top: 100px;">
 						<div class="row row-content">
-							<div class="col-xs-4 col-xs-offset-4">
+							<div class="col-xs-6 col-xs-offset-3">
 								<form action="" method="POST">
 									<fieldset align="center">
 									<legend>Utwórz nowe konto</legend>
-										<?php echo $lbEmail?><input type="email" name="email" placeholder="<?php echo $logEmailpch?>" required><br>
-										<?php echo $lbHaslo?><input type="password" name="haslo" placeholder="<?php echo $logHaslopch?>" required><br>
-										Imię<input type="text" name="imie" required><br>
-										Nazwisko<input type="text" name="nazwisko" required><br>
-										<input type="submit" value="Rejestruj">
+										<label><?php echo $lbEmail?></label><br>
+										<input type="email" name="email" placeholder="<?php echo $logEmailpch?>" required><br>
+										<label><?php echo $lbHaslo?></label><br>
+										<input type="password" name="haslo" placeholder="<?php echo $logHaslopch?>" required><br>
+										<label>Imię</label><br>
+										<input type="text" name="imie" placeholder="Wprowadź imię" required style="margin-left: 10px;"><br>
+										<label>Nazwisko</label><br>
+										<input type="text" name="nazwisko" placeholder="Wprowadź nazwisko" required><br>
+										<input type="submit" value="Rejestruj" style="margin-left: 5px;">
 									</fieldset>	
 								</form>
 							</div>				

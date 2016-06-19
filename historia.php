@@ -39,12 +39,13 @@
 								<input type="submit" value="Filtruj" style="margin: 5px 0px 0px 15px;">
 						</form>	
 					</div>
-				</div> <br><br><br>
-						<div class="container">
+				</div> 
+			</div><br><br><br>
+			<div class="container">
 				<div class="row row-content">
 					<div class="col-xs-12">
 						<h2>Historia zażytych leków</h2>
-						</div>	
+					</div>	
 				</div>
 				<div class="row row-content">
 					<div class="col-xs-12">
@@ -54,9 +55,7 @@
 								<th>Ilość</th>
 								<th>Data</th>
 							</tr>												
-			
-			<div class="row">
-				<div class="col-xs-12"> <?php
+ <?php
 			
 		
 				
@@ -69,14 +68,15 @@
 				//wykonanie zapytania
 				$zazyte = $baza -> query($wyszukaj_zazyte);
 				if($zazyte -> num_rows == 0){
-					// jesli nie znaleziono zadnego rekordu tzn. ze zadne leki sie nie przeterminowaly
+					// jesli nie znaleziono zadnego rekordu tzn. ze zadne leki nie zostaly zazyte
 					echo "W wybranym okresie nie zażyłeś żadnych leków.<h4>";
 				}else{
 					// jesli znaleziono
 					while($row = $zazyte->fetch_assoc()) {
 							
 						echo "<tr> <td> ".  $row["lek"]." </td> <td> " . $row["liczba"] . " </td> <td> " .$row["data"] . "</td>  </tr>";
-					}					
+					}
+					echo "</table>";
 				}
 				echo "Wybrany zakres <br>od ".$data_od ." do ".$data_do;
 				
@@ -97,6 +97,7 @@
 							
 						echo "<tr> <td>" .  $row["lek"]. "</td> <td> " . $row["liczba"] . " </td> <td> " .$row["data"] . "</td>  </tr>";
 					}
+					echo "</table>";
 				} else {
 					echo "Nie zażywałeś jeszcze żadnych leków. Gratulujemy zdrowia!";
 				}
@@ -110,6 +111,6 @@
 
 
 <?php
-//OLA NAPRAW STOPKE!!!!
-//	require_once 'inc/stopka.php';
+
+	require_once 'inc/stopka.php';
 ?>
