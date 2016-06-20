@@ -23,20 +23,31 @@
 	
 //Wyszukanie odpowiedniego leku
 
-	$wyszukaj = "SELECT id FROM leki_specyfikacja WHERE nazwa='$dbNazwa'";
+	$wyszukaj = "SELECT * FROM leki_specyfikacja WHERE nazwa='$dbNazwa'";
 	$lek=$baza->query($wyszukaj);
 	$lek_spec=$lek->fetch_assoc();
 	$lek_id=$lek_spec["id"];
 	
+	
 	$wyszukaj2="SELECT * FROM BazaLekow WHERE id_specyfikacja='$lek_id'";
 	$lek2=$baza->query($wyszukaj2);
 	
+	$data_lek=$lek2->fetch_assoc();
+	$termin=$data_lek["TerminWaznosci"];
+	$dzisiaj=date("Y-m-d");
 	
+		
 	
 	if ($lek2->num_rows == 0){
 		echo "Nie posiadasz takiego leku w apteczce! Sprawdź, czy dobrze podałeś jego nazwę, lub wybierz się do apteki.";
 	}
 	else {
+		
+		if($dzisiaj>$termin){
+			echo "Lek jest przeterminowany! Wybierz się do apteki kupić nowy.";
+		}
+		else {
+		
 		//wybranie ilosci leku z tabeli 
 		$akcja2= "SELECT ilosc FROM BazaLekow WHERE id_specyfikacja='$lek_id'";
 		$result = $baza->query($akcja2);
@@ -84,7 +95,7 @@
 		}
 	}
 	}
-	
+	}
 
 	
 // Zapytanie: usuwanie leku ktorego ilosc = 0 
