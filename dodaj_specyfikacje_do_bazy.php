@@ -25,7 +25,7 @@
 			<center style="margin: 50px 0px;"><b><a href="index.php"><?php echo $powrot; ?></a></b></center>
 		</div> <?php
 	}else{
-		echo "Error: " . $akcja . "<br>" . $baza->error;
+		echo "Ups! Nie mogliśmy dodać specyfikacji tego leku. Zapewne istnieje już w bazie.";
 	}
 	$baza->close();
 ?>
