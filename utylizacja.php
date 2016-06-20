@@ -11,17 +11,10 @@
 	} ?>
 	
 	<div id="tresc">
-	<?php
-//		if(!isset($_GET['wybrano'])){
-//			header("Location: index.php?wybrano=0&zaloguj_sie=1");
-//		}else
-//			$opcja = ($_GET['wybrano']);
-//		
-//		echo "Wybrano opcję nr: " . $opcja . " " . $wybrane[$opcja];
-	?>
+
 	<?php
 		if(!isset($_SESSION['zalogowany'])){
-			header("Location: index.php?wybrano=0&zaloguj_sie=1");
+			header("Location: index.php?wybrano=0");
 		}else{ ?>
 		<div class="container">
 			<div class="row row-content">
@@ -75,9 +68,5 @@ else {
 	</div>
 <?php }
 	require_once 'inc/stopka.php';
-
-	
-// wykonanie utylizacji lekow przeterminowanych	
-	$akcja2 = "UPDATE BazaLekow SET usuniety = true WHERE idLeku = $idLeku";
 	$baza->close();
 ?>

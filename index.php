@@ -3,7 +3,6 @@
 	
 	require_once 'conf/zmienne.php';
 	require_once "inc/$lang/teksty.php";
-	require_once "inc/funkcje.php";
 	require_once "inc/nagl.php";
 	require_once "inc/baza.php";
 
@@ -44,8 +43,6 @@
 			session_destroy();
 		}
 	}
-
-//////////////KONIEC LOGOWANKA////////////////////
 ?>
 
 

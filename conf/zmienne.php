@@ -2,8 +2,7 @@
 	session_start();
 	//Ogolne
 	$lang = 'pl';
-	$dokumentacja='doc';
-	$witryna="http://student.agh.edu.pl/arak/public_html_apps/apteczka";
+	$witryna="http://student.agh.edu.pl/arak/public_html/domowa_apteczka_edits";
 	
 	//Dostep do bazy
 	$dbServer='mysql.agh.edu.pl';

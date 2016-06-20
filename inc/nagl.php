@@ -26,7 +26,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <!--<a class="navbar-brand" href="index.php?wybrano=0"><i class="fa fa-medkit"></i></a>-->
+
         </div>
         <?php require_once "inc/menu.php";?>
       </div>

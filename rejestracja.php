@@ -3,7 +3,6 @@
 	
 	require_once 'conf/zmienne.php';
 	require_once "inc/$lang/teksty.php";
-	require_once "inc/funkcje.php";
 	require_once "inc/nagl.php";
 	require_once "inc/baza.php";
 
@@ -65,14 +64,7 @@
 						
 					</div>
 				</div>
-				<?php 
-			
-				$email = $_POST['email'];
-				$haslo = $_POST['haslo'];
-				$imie = $_POST['imie'];
-				$nazwisko = $_POST['nazwisko'];
-				$szyfr_haslo = crypt($haslo, CRYPT_MD5);
-				
+				<?php 				
 				
 		}
 	}

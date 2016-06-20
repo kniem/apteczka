@@ -21,7 +21,7 @@
 	<div id="tresc">
 	<?php
 		if(!isset($_SESSION['zalogowany'])){
-			header("Location: index.php?wybrano=0&zaloguj_sie=1");
+			header("Location: index.php?wybrano=0");
 		}else{ ?>
 			<div class="container" style="padding-top: 50px;">
 				<div class="row row-content">

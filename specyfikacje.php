@@ -10,28 +10,12 @@
 	if($_GET['wyloguj'] == 1){
 		session_destroy();
 	}
-/*	//Sprawdzenie czy zalogowano - 
-	if(isset($_POST['email']) && isset($_POST['haslo'])){
- 		if(sprawdz_login_haslo($_POST['email'],$_POST['haslo']))
-			$_SESSION['zalogowany'] = $_POST['email'];
-		else $byl_blad_logowania=2;}
-	else{ 
-		session_destroy();
-	}*/
-	
 ?>
 	<div id="tresc">
-	<?php
-//		if(!isset($_GET['wybrano'])){
-//			header("Location: index.php?wybrano=0&zaloguj_sie=1");
-//		}else
-//			$opcja = ($_GET['wybrano']);
-//		
-//		echo "Wybrano opcj� nr: " . $opcja . " " . $wybrane[$opcja];
-	?>
+
 	<?php
 		if(!isset($_SESSION['zalogowany'])){
-			header("Location: index.php?wybrano=0&zaloguj_sie=1");
+			header("Location: index.php?wybrano=0");
 		}else{ ?>
 		<div class="container">
 			<div class="row row-content">
@@ -52,7 +36,6 @@
 											
 	<?php 
 	
-//		$dzisiaj = date("Y-m-d");
 // Przygotowanie zapytania
 		$query = "select * from leki_specyfikacja";
 		

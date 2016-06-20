@@ -1,10 +1,4 @@
 <?php 
-// Polaczenie z baza danych
-
-//$dbServer,  serwer, na którym dzia³a MySQL
-//$dbLogin, nazwa u¿ytkownika
-//$dbHaslo, haslo uzytkownika
-//$dbBaza, wybrana baza danych
 
 //Polaczenie z baza
 	$baza= new mysqli($dbServer, $dbLogin, $dbHaslo, $dbBaza);
