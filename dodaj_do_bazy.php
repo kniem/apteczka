@@ -36,7 +36,7 @@
 		if($baza->query($akcja) == TRUE){
 			echo "Dodano lek do apteczki";?>
 			<div id="tresc">
-				<center style="margin: 50px 0px;"><b><a href="index.php">Powrót do strony głównej</a></b></center>
+				<center style="margin: 50px 0px;"><b><a href="index.php"><?php echo $powrot; ?></a></b></center>
 			</div> <?php
 		}else{
 			echo "Error: " . $akcja . "<br>" . $baza->error;

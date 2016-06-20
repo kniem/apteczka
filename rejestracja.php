@@ -34,7 +34,7 @@
 				echo "Zarejestrowałeś się w aplikacji Domowa Apteczka. Przejdź na stronę główną, by się zalogować."
 				?>
 				<div id="tresc">
-				<center style="margin: 50px 0px;"><b><a href="index.php">Strona główna</a></b></center></div>
+				<center style="margin: 50px 0px;"><b><a href="index.php"><?php echo $powrot; ?></a></b></center></div>
 				<?php
 			}
 		}
@@ -47,15 +47,15 @@
 							<div class="col-xs-6 col-xs-offset-3">
 								<form action="" method="POST">
 									<fieldset align="center">
-									<legend>Utwórz nowe konto</legend>
+									<legend><?php echo $rejestrNowe; ?></legend>
 										<label><?php echo $lbEmail?></label><br>
 										<input type="email" name="email" placeholder="<?php echo $logEmailpch?>" required><br>
 										<label><?php echo $lbHaslo?></label><br>
 										<input type="password" name="haslo" placeholder="<?php echo $logHaslopch?>" required><br>
-										<label>Imię</label><br>
-										<input type="text" name="imie" placeholder="Wprowadź imię" required style="margin-left: 10px;"><br>
-										<label>Nazwisko</label><br>
-										<input type="text" name="nazwisko" placeholder="Wprowadź nazwisko" required><br>
+										<label><?php echo $rejestrImie; ?></label><br>
+										<input type="text" name="imie" placeholder="<?php echo $rejestrImiepch; ?>" required style="margin-left: 10px;"><br>
+										<label><?php echo $rejestrNazwisko; ?></label><br>
+										<input type="text" name="nazwisko" placeholder="<?php echo $rejestrNazwiskopch; ?>" required><br>
 										<input type="submit" value="Rejestruj" style="margin-left: 5px;">
 									</fieldset>	
 								</form>

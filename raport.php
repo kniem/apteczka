@@ -20,13 +20,13 @@
 				<div class="row row-content">
 					<div class="col-xs-12">
 						<form action="" method="GET" style="margin-bottom: 25px;">
-							<h3 style="margin-bottom: 20px;">Wygeneruj raport o kosztach zutylizowanych przez Ciebie leków w danym okresie.</h3>
+							<h3 style="margin-bottom: 20px;"><?php echo $raportNaglowek; ?></h3>
 							<div class="col-xs-4">
-								<label for="data_od">od</label>
+								<label for="data_od"><?php echo $raportOd; ?></label>
 								<input type="date" name="data_od" required>
 							</div>
 							<div class="col-xs-4">
-								<label for="data_do">do</label>
+								<label for="data_do"><?php echo $raportDo; ?></label>
 								<input type="date" name="data_do" required>
 							</div>
 								<input type="submit" value="Wygeneruj raport" style="margin: 5px 0px 0px 15px;">

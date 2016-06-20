@@ -21,17 +21,17 @@
 		<div class="container">
 			<div class="row row-content">
 				<div class="col-xs-12">
-					<h2>Zawartość Twojej apteczki</h2>
+					<h2><?php echo $bazaNaglowek; ?></h2>
 				</div>	
 			</div>
 			<div class="row row-content">
 				<div class="col-xs-12">
 					<table>
 						<tr>
-							<th>Nazwa leku</th>
-							<th>Ilość</th>
-							<th>Cena</th>
-							<th>Termin przydatności</th>
+							<th><?php echo $bazaNazwa; ?></th>
+							<th><?php echo $bazaIlosc; ?></th>
+							<th><?php echo $bazaCena; ?></th>
+							<th><?php echo $bazaTermin; ?></th>
 						</tr>
 											
 	<?php 

@@ -27,13 +27,13 @@
 				<div class="row row-content">
 					<div class="col-xs-12">
 						<form action="" method="GET" style="margin-bottom: 25px;">
-							<h3 style="margin-bottom: 20px;">Zobacz listę zażywanych przez Ciebie leków w danym okresie.</h3>
+							<h3 style="margin-bottom: 20px;"><?php echo $historiaNaglowek; ?></h3>
 							<div class="col-xs-4">
-								<label for="data_od">od</label>
+								<label for="data_od"><?php echo $historiaOd; ?></label>
 								<input type="date" name="data_od" required>
 							</div>
 							<div class="col-xs-4">
-								<label for="data_do">do</label>
+								<label for="data_do"><?php echo $historiaDo; ?></label>
 								<input type="date" name="data_do" required>
 							</div>
 								<input type="submit" value="Filtruj" style="margin: 5px 0px 0px 15px;">
@@ -44,16 +44,16 @@
 			<div class="container">
 				<div class="row row-content">
 					<div class="col-xs-12">
-						<h2>Historia zażytych leków</h2>
+						<h2><?php echo $historiaTab; ?></h2>
 					</div>	
 				</div>
 				<div class="row row-content">
 					<div class="col-xs-12">
 						<table>
 							<tr>
-								<th>Nazwa leku</th>
-								<th>Ilość</th>
-								<th>Data</th>
+								<th><?php echo $historiaNazwa; ?></th>
+								<th><?php echo $historiaIlosc; ?></th>
+								<th><?php echo $historiaData; ?></th>
 							</tr>												
  <?php
 			

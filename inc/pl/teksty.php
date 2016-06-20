@@ -7,6 +7,9 @@
 	
 //stopka
 	$stopka = "Aleksandra Rak Kamelia Niemczyk";
+
+//powrot do strony glownej
+	$powrot = "Powrót do strony głównej";
 	
 //logowanie
 	$lgLogowanie="Wprowadzanie danych logowania";
@@ -14,7 +17,7 @@
 	$logEmailpch="Wprowadz swoj email";
 	$lbHaslo="Hasło";
 	$logHaslopch="Wprowadź hasło";
-	$blad_logowania="Błąd logowania! Nieprawidłowy email lub hasło.";
+	$logBrakkonta = "Nie masz konta?";
 	
 //menu
 	$menuAp = "Apteczka"; //
@@ -22,21 +25,71 @@
 	$menuDodaj = "Dodaj lek"; //
 	$menuUtylizacja = "Leki do utylizacji"; //
 	$menuRaport = "Raport";
-	$menuLog="Logowanie";
-	$menuBazy="Z bazy";
 	$menuDok="Dokumentacja";
-	$menuOpis="Opis zadania";
 	$menuHistoria="Historia";
 	$menuWyloguj="Wyloguj";
+
+//strona glowna
+	$glownaWitaj = "Witaj w domowej apteczce ";
+	$glownaWez = "Wziąłeś lek z apteczki?";
+	$glownaData = "Data";
+	$glownaNazwa = "Nazwa";
+	$glownaIlosc = "Ilość";
 	
-//Wybrana opcja
-	$wybrane[0]="Logowanie";
-	$wybrane[1]="";
-	$wybrane[2]="Z bazy";
-	$wybrane[3]="Dokumentacja";
-	$wybrane[4]="Opis zadania";
-	$wybrane[5]="";
-	$wybrane[6]="";
-	$wybrane[7]="";
+//baza lekow
+	$bazaNazwa = "Nazwa leku";
+	$bazaIlosc = "Ilość";
+	$bazaCena = "Cena";
+	$bazaTermin = "Termin przydatności";
+	$bazaNaglowek = "Zawartość Twojej apteczki";
+
+//dodaj lek
+	$dodajNazwa = "Nazwa leku";
+	$dodajIlosc = "Ilość";
+	$dodajCena = "Cena leku";
+	$dodajTermin = "Data ważności";
+	$dodajWprowadz = "Wprowadź lek do apteczki";
+	$dodajEan = "Kod EAN";
+	$dodajSubst = "Substancja czynna";
+	$dodajSpec = "Nie znalazłeś leku, który chcesz dodać do apteczki? Dodaj jego specyfikację.";
+
+//historia
+	$historiaNaglowek = "Zobacz listę zażywanych przez Ciebie leków w danym okresie.";
+	$historiaOd = "od";
+	$historiaDo = "do";
+	$historiaTab = "Historia zażytych leków";
+	$historiaNazwa = "Nazwa leku";
+	$historiaIlosc = "Ilość";
+	$historiaData = "Data";
+
+//raport
+	$raportNaglowek = "Wygeneruj raport o kosztach zutylizowanych przez Ciebie leków w danym okresie.";
+	$raportOd = "od";
+	$raportDo = "do";
+
+//rejestracja
+	$rejestrImie = "Imię";
+	$rejestrNazwisko = "Nazwisko";
+	$rejestrImiepch = "Wprowadź imię";
+	$rejestrNazwiskopch = "Wprowadź nazwisko";
+	$rejestrNowe = "Utwórz nowe konto";
+
+//specyfikacja
+	$specNaglowek = "Baza leków";
+	$specDodaj = "dodaj lek do apteczki";
+	$specSpec = "Wprowadź jego specyfikację.";
+	$specNazwa = "Nazwa leku";
+	$specEan = "EAN";
+	$specSubst = "Substancja czynna";
+
+//utylizacja
+	$utylizacjaNagl = "Leki przeterminowane";
+	$utylizacjaNazwa = "Nazwa leku";
+	$utylizacjaEan = "Kod EAN";
+	$utylizacjaIlosc = "Ilość";
+	$utylizacjaCena = "Cena";
+	$utylizacjaTermin = "Termin przydatności";
+	$utylizacjaBrak = "Nie masz żadnych leków do utylizacji";
+
 	
 	?>

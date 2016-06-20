@@ -31,14 +31,14 @@
 	$przeterminowane = $baza->query($akcja1);
 
 			if ($przeterminowane->num_rows > 0) { ?>
-					<h2>Leki przeterminowane</h2>
+					<h2><?php echo $utylizacjaNagl; ?></h2>
 					<table>
 						<tr>
-							<th>Nazwa leku</th>
-							<th>Kod EAN</th>
-							<th>Ilość</th>
-							<th>Cena</th>
-							<th>Termin przydatności</th>
+							<th><?php echo $utylizacjaNazwa; ?></th>
+							<th><?php echo $utylizacjaEan; ?></th>
+							<th><?php echo $utylizacjaIlosc; ?></th>
+							<th><?php echo $utylizacjaCena; ?></th>
+							<th><?php echo $utylizacjaTermin; ?></th>
 						</tr>				
 					
 <?php			
@@ -60,7 +60,7 @@ while($row = $przeterminowane->fetch_assoc()) {
 
 <?php		} 
 else {
-	echo "<h3>Nie masz żadnych leków do utylizacji</h3>";
+	echo "<h3>" . $utylizacjaBrak . "</h3>";
 		} ?>
 				</div>
 			</div>

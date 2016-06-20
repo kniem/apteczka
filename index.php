@@ -67,7 +67,7 @@
 				</div>				
 			</div>
 			<br><center>
-			<h4>Nie masz konta?</h4><br>
+			<h4><?php echo $logBrakkonta; ?></h4><br>
 				<form action="rejestracja.php" method="POST">
 				<input type="submit" value="Zarejestruj się"></form>
 				</center>
@@ -79,23 +79,23 @@
 		<div class="container">
 			<div class="row row-content" style="padding-top: 40px; padding-bottom: 40px;">
 				<div class="col-xs-12">
-					<h2>Witaj w domowej apteczce <?php echo $uzytkownik;?>!</h2>
+					<h2><?php echo $glownaWitaj; echo $uzytkownik;?>!</h2>
 					<h4>Domowa apteczka to aplikacja, która pomoże Tobie i Twojej rodzinie uporządkować
 					leki. Stwórz swoją własną bazę leków i na bieżąco kontroluj ich zużycie.</h4>
 				</div>
 			</div>	
 			<div class="row row-content" style="padding-bottom: 40px;">	
 				<div class="col-xs-12">
-					<h2>Wziąłeś lek z apteczki?</h2>
+					<h2><?php echo $glownaWez; ?></h2>
 				</div>
 				<div class="col-xs-12">
 					<form action="wez_lek_bazy.php" method="GET">
 						<fieldset>
-							<label for="data">Data</label><br>
+							<label for="data"><?php echo $glownaData; ?></label><br>
 							<input type="date" name="data" required><br>
-							<label for="ean">Nazwa</label><br>
+							<label for="ean"><?php echo $glownaNazwa; ?></label><br>
 							<input type="text" name="name" required><br>
-							<label for="ilosc">Ilość</label><br>
+							<label for="ilosc"><?php echo $glownaIlosc; ?></label><br>
 							<input type="number" name="ilosc" min="1" required><br>
 							<input type="submit" value="Zapisz" style="margin: 5px;">
 						</fieldset>	

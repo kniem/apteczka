@@ -20,18 +20,18 @@
 		<div class="container">
 			<div class="row row-content">
 				<div class="col-xs-12">
-					<h2>Baza leków</h2>
-					<p>Poniżej umieszczone leki mogą zostać umieszczone w Twojej apteczce. W tym celu <a href="dodaj_lek.php?wybrano=3">Dodaj lek do apteczki</a>.<br>
-					Nie widzisz leku, który chcesz dodać? <a href="dodaj_lek.php?wybrano=3">Wprowadź jego specyfikację!</a>
+					<h2><?php echo $specNaglowek; ?></h2>
+					<p>Poniżej umieszczone leki mogą zostać umieszczone w Twojej apteczce. W tym celu <a href="dodaj_lek.php?wybrano=3"><?php echo $specDodaj; ?></a>.<br>
+					Nie widzisz leku, który chcesz dodać? <a href="dodaj_lek.php?wybrano=3"><?php echo $specSpec; ?></a>
 				</div>	
 			</div>
 			<div class="row row-content">
 				<div class="col-xs-12">
 					<table>
 						<tr>
-							<th>Nazwa leku</th>
-							<th>EAN</th>
-							<th>Substancja czynna</th>
+							<th><?php echo $specNazwa; ?></th>
+							<th><?php echo $specEan; ?></th>
+							<th><?php echo $specSubst; ?></th>
 						</tr>
 											
 	<?php 

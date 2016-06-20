@@ -20,15 +20,15 @@
 				<div class="row row-content">
 					<div class="col-xs-12 col-sm-6">
 						<form role="form" action="dodaj_do_bazy.php" method="GET">
-							<h3>Wprowadź lek do apteczki</h3>
+							<h3><?php echo $dodajWprowadz; ?></h3>
 							<div class="col-xs-12">
-								<label for="nazwa">Nazwa leku</label><br>
+								<label for="nazwa"><?php echo $dodajNazwa; ?></label><br>
 								<input type="text" name="nazwa" required><br>
-								<label for="ilosc">Ilość</label><br>
+								<label for="ilosc"><?php echo $dodajIlosc; ?></label><br>
 								<input type="number" name="ilosc" min="1" required><br>
-								<label for="cena">Cena leku</label><br>
+								<label for="cena"><?php echo $dodajCena; ?></label><br>
 								<input type="number" name="cena" required><br>
-								<label for="termin">Data ważności</label><br>
+								<label for="termin"><?php echo $dodajTermin; ?></label><br>
 								<input type="date" name="termin" required><br>
 								<input type="submit" value="Zapisz" style="margin: 5px;">
 								
@@ -36,14 +36,14 @@
 						</form>	
 					</div>
 					<div class="col-xs-12 col-sm-6">
-						<h3>Nie znalazłeś leku, który chcesz dodać do apteczki? Dodaj jego specyfikację.</h3>
+						<h3><?php echo $dodajSpec; ?></h3>
 						<form role="form" action="dodaj_specyfikacje_do_bazy.php" method="GET">
 							<div class="col-xs-12">
-								<label for="nazwa">Nazwa leku</label><br>
+								<label for="nazwa"><?php echo $dodajNazwa; ?></label><br>
 								<input type="text" name="nazwa" required><br>
-								<label for="ean">Kod EAN</label><br>
+								<label for="ean"><?php echo $dodajEan; ?></label><br>
 								<input type="text" name="ean" required><br>
-								<label for="substancja">Substancja czynna</label><br>
+								<label for="substancja"><?php echo $dodajSubst; ?></label><br>
 								<input type="text" name="substancja" required><br>
 								<input type="submit" value="Zapisz" style="margin: 5px;">
 							</div>
