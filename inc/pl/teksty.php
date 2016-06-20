@@ -35,6 +35,7 @@
 	$glownaData = "Data";
 	$glownaNazwa = "Nazwa";
 	$glownaIlosc = "Ilość";
+	$glownaUtylizacja = "leki do utylizacji.";
 	
 //baza lekow
 	$bazaNazwa = "Nazwa leku";

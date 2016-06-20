@@ -83,7 +83,27 @@
 					<h4>Domowa apteczka to aplikacja, która pomoże Tobie i Twojej rodzinie uporządkować
 					leki. Stwórz swoją własną bazę leków i na bieżąco kontroluj ich zużycie.</h4>
 				</div>
-			</div>	
+			</div>
+			<?php
+			if($baza -> connect_errno != 0){
+				echo "Error: " . $baza -> connect_errno;
+			}else{
+				$dzisiaj=date("Y-m-d");
+				//sprawdzenie czy jakies leki sie przeterminowaly
+				$przeterminowane= "SELECT * from BazaLekow WHERE (TerminWaznosci<='$dzisiaj' AND usuniety = false)";
+				
+				//wykonanie zapytania i zapisanie rezultatu
+				$wynik = $baza->query($przeterminowane);
+				if($wynik -> num_rows > 0){?>
+					<div class="row row-content" style="padding-bottom: 40px;">	
+						<div class="col-xs-12">
+							<h2 style="color: red;">Uwaga!</h2>
+							<h4>W apteczce znajdują się przeterminowane leki! Aby je zutylizować przejdź do zakładki 
+							<a href="utylizacja.php?wybrano=4"> <?php echo $glownaUtylizacja; ?></a></h4>
+						</div>
+					</div>
+				<?php } } $baza ->close(); ?>
+			
 			<div class="row row-content" style="padding-bottom: 40px;">	
 				<div class="col-xs-12">
 					<h2><?php echo $glownaWez; ?></h2>
